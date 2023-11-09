@@ -1,6 +1,6 @@
 {
-  "name": "awesome-extension",
-  "version": "0.0.0",
+  "name": "auto-flow",
+  "version": "0.0.1",
   "scripts": {
     "start": "npx nodemon -x npm run dev",
     "dev": "vite build --mode developmemnt",
