@@ -197,7 +197,6 @@ class Flow {
     try {
       const data = JSON.parse(oimiCache);
       this.nodeList.push(...data);
-      console.log('auto chache', this.nodeList)
       // 设置step
       this.nodeList.forEach(nodeInfo => {
         if (!nodeInfo) return;
@@ -209,7 +208,6 @@ class Flow {
           null
         );
         const el = node.singleNodeValue;
-        console.log('el', el)
         if (!el) return;
         if (nodeInfo.isInput && nodeInfo.value) el.value = nodeInfo.value;
         if (nodeInfo.isInput && nodeInfo.enter) {
@@ -301,7 +299,6 @@ class Flow {
       1000
     ).then(() => {
       this.currentStep = null;
-      console.log("finished action run");
       // continue make dom highlight
       // this.updateAllNodeStep()
     });
