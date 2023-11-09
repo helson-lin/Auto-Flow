@@ -7,6 +7,7 @@ export default defineComponent({
     const asideClose = ref(false);
     const flow = ref(false);
     const switchRef = ref(false);
+    const startMove = ref(false);
     const list = ref([]); // action list
 
     const expand = () => {
@@ -42,8 +43,6 @@ export default defineComponent({
 			const { offsetLeft, offsetTop } = target;
 			const deltaLeft = clientX - offsetLeft;
 			const deltaTop = clientY - offsetTop;
-      console.log(event, deltaLeft, deltaTop)
-      // e.target.style = `top: ${pageX}px; left: ${pageY}px`
       target.style = `transform: translate(${deltaLeft}px, ${deltaTop}px);`
     }
 
@@ -83,7 +82,7 @@ export default defineComponent({
 </script>
 <template>
   <div class="overlay" v-show="visible">
-    <div draggable="true" @drag="dragMove" @dragstart="dragStart" :class="['popup', asideClose ? 'popup-close' : 'popup-open']">
+    <div draggable="false" :class="['popup', asideClose ? 'popup-close' : 'popup-open']">
       <!-- 侧边按钮信息 -->
     <div class="oimi-icon" @click="expand">
       <svg width="30px" v-if="asideClose" height="30px" viewBox="0 0 1024 1024" version="1.1"
@@ -154,87 +153,3 @@ export default defineComponent({
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.overlay {
-  @apply fixed inset-0 w-full h-full pointer-events-none;
-  z-index: 99999;
-}
-
-.oimi-icon {
-  @apply bg-white rounded-full shadow-md absolute pointer-events-auto top-1/2 transform -translate-y-1/2 -translate-x-full;
-  width: 30px;
-  height: 30px;
-  z-index: 99999;
-}
-
-.popup {
-  pointer-events: all;
-  transition: all 0.3s linear;
-  @apply absolute top-4 right-4 bg-white shadow-lg p-4 rounded-md pr-2 pb-2 pl-2 pt-2 z-auto;
-
-  &-open {
-    @apply w-72;
-  }
-
-  &-close {
-    @apply w-0 p-0;
-  }
-}
-
-
-
-.tool-area {
-  @apply overflow-hidden w-full h-full box-border flex flex-col border-b pb-2 pt-2;
-}
-
-.actions {
-  @apply flex flex-col;
-
-  .action {
-    @apply flex flex-col pb-3 border-b border-gray-300;
-
-    &-item {
-      @apply flex items-center pl-2 pr-2 pt-2 pb-2 box-border h-10;
-
-      &-label {
-        @apply text-black font-bold pr-2 box-border text-sm w-20;
-      }
-    }
-  }
-}
-.switch {
-  @apply relative inline-block w-10 h-6 ;
-}
-
-.switch input {
-  display: none;
-}
-
-.slider {
-  -webkit-transition: .4s;
-  transition: .4s;
-  @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0 pt-1 pb-1 bg-gray-200 box-border rounded-sm shadow-inner ;
-}
-
-.slider::after {
-  content: "";
-  @apply absolute inline-block top-0 left-0 right-0 bottom-0 w-full h-full border-2 border-gray-100;
-}
-
-.slider:before {
-  content: "";
-  -webkit-transition: .4s;
-  transition: .4s;
-  @apply absolute w-1/2 h-full bottom-0 bg-white inline-block ;
-}
-
-input:checked + .slider {
-  background-color: #a883f7c6;
-}
-
-input:checked + .slider:before {
-  @apply transform translate-x-5;
-}
-
-</style>

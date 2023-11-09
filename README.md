@@ -1,21 +1,33 @@
 ![repository-banner.png](https://res.cloudinary.com/alvarosaburido/image/upload/v1612193118/as-portfolio/Repo_Banner_kexozw.png)
 
-# Vite + Vue Chrome Extension Example
+# Auto Flow
 
-> Repo for the video [Create a Chrome Extension with Vite + Vue](https://youtu.be/E_189013gCM)
+Auto Flow is a Chrome extension that allows you to automatically click buttons or fill forms in a webpage.
 
-## Build Setup
+## Features
+
+- Fill forms automatically.
+- Fill forms with a single click.
+
+## Development Or Production
 
 ```bash
 # install dependencies
 $ yarn
 
 # build in dev mode
-$ yarn dev
+$ yarn start
 
 # build for production 
 $ yarn build
 ```
+
+### About `yarn start`
+
+this is a dev mode, it will watch for changes in the `src` directory and will automatically build the project with dev mode.
+
+After building the project, you can go to `chrome://extensions/` page and toggle `Auto flow` extension OFF and then ON again.
+
 
 ## Testing locally on Chrome
 

@@ -1,5 +1,4 @@
 import { resolve } from "path";
-
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { chromeExtension } from "vite-plugin-chrome-extension";
@@ -17,11 +16,19 @@ export default defineConfig({
   build: {
     minify: 'terser',
     terserOptions: {
-      keep_classnames: true,
-      keep_fnames: true,
+      keep_classnames: false,
+      keep_fnames: false,
     },
     rollupOptions: {
-      input: "src/manifest.json"
+      input: "src/manifest.json",
+      output: {
+          assetFileNames: '[name]-[hash].[ext]',
+          manualChunks(id) {
+              if (id.includes('node_modules')) {
+                  return id.toString().split('node_modules/')[1].split('/')[0].toString();
+              }
+          }
+      }
     }
   },
   plugins: [
@@ -39,5 +46,5 @@ export default defineConfig({
     }),
     ViteIcons(),
     chromeExtension()
-  ]
+  ],
 });

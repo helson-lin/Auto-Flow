@@ -6,6 +6,12 @@
     font-size: 16px;
 }
 
+#oimi-auto-flow {
+    z-index: 999;
+    @apply fixed left-0 right-0 bottom-0 top-0 pointer-events-none;
+}
+
+
 .border-light {
     position: relative;
     outline: 2px solid #a883f7c6 !important;
