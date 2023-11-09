@@ -37,7 +37,7 @@
       @apply flex items-center pl-2 pr-2 pt-2 pb-2 box-border h-10;
 
       &-label {
-        @apply text-black font-bold pr-2 box-border text-sm w-20;
+        @apply text-black font-bold pr-1 box-border text-sm w-20;
       }
     }
   }
@@ -58,14 +58,15 @@
 
 .slider::after {
   content: "";
-  @apply absolute inline-block top-0 left-0 right-0 bottom-0 w-full h-full border-2 border-gray-100;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  @apply absolute inline-block top-0 left-0 right-0 bottom-0 w-full h-full rounded-sm;
 }
 
 .slider:before {
   content: "";
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  @apply absolute w-1/2 h-full bottom-0 bg-white inline-block;
+  @apply absolute w-1/2 h-full bottom-0 bg-white inline-block rounded-sm;
 }
 
 input:checked + .slider {
