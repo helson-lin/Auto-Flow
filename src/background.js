@@ -1,21 +1,23 @@
-chrome.action.onClicked.addListener(async tab => {
-  if (tab.id) {
-    chrome.tabs.sendMessage(tab.id, { toggleVisible: true });
-  }
-});
-
-async function getCurrentTab() {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  console.log({ tab });
-  return tab;
+function getCurrentTabId(callback) {
+  chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    if (callback) callback(tabs.length ? tabs[0].id : null);
+  });
 }
 
+
+function sendMessageToContentScript(message, callback) {
+  getCurrentTabId(tabId => {
+    chrome.tabs.sendMessage(tabId, message, function(response) {
+      if (callback) callback(response);
+    });
+  });
+}
+
+chrome.action.onClicked.addListener(async tab => {
+  sendMessageToContentScript({ toggleVisible: true });
+});
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  switch (request.type) {
-    case "POPUP_INIT":
-      getCurrentTab().then(sendResponse);
-      return true;
-    default:
-      break;
-  }
+  sendMessageToContentScript(request, sendResponse);
+  return true;
 });

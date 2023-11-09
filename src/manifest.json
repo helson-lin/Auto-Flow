@@ -1,5 +1,5 @@
 {
-    "name": "Awesome Extension",
+    "name": "Auto flow",
     "version": "1.0.0",
     "manifest_version": 3,
     "action": {
@@ -8,7 +8,7 @@
           "48": "assets/icon48.png",
           "128": "assets/icon128.png"
         },
-        "default_title": "Awesome Extension"
+        "default_title": "Auto flow"
       },
     "icons": {
         "16": "assets/icon16.png",
@@ -25,7 +25,8 @@
         }
     ],
     "permissions": [
-        "tabs"
+        "tabs",
+        "contextMenus"
     ]
 
 }

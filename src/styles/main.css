@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    font-size: 16px;
+}
+
+.border-light {
+    position: relative;
+    outline: 2px solid #a883f7c6 !important;
+    box-shadow: 0 2px 10px #A783F7;
+    background-color: #ECE5FD;
+}
+
+.border-primary {
+    border: 1px solid #a883f7c6;
+}
+
+.border-light::after {
+    @apply absolute -right-2 -top-2 inline-block text-white text-base bg-black rounded-full text-center z-50;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    content: attr(data-oimi-index);
+}

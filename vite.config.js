@@ -15,6 +15,11 @@ export default defineConfig({
     }
   },
   build: {
+    minify: 'terser',
+    terserOptions: {
+      keep_classnames: true,
+      keep_fnames: true,
+    },
     rollupOptions: {
       input: "src/manifest.json"
     }
