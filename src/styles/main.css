@@ -3,30 +3,43 @@
 @tailwind utilities;
 
 :root {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 #oimi-auto-flow {
-    z-index: 999;
-    @apply fixed left-0 right-0 bottom-0 top-0 pointer-events-none;
+  z-index: 99999;
+  @apply fixed left-0 right-0 bottom-0 top-0 pointer-events-none;
 }
 
-
 .border-light {
-    position: relative;
-    outline: 2px solid #a883f7c6 !important;
-    box-shadow: 0 2px 10px #A783F7;
-    background-color: #ECE5FD;
+  position: relative;
+  outline: 2px solid #a883f7c6 !important;
+  box-shadow: 0 2px 10px #a783f7;
+  background-color: #ece5fd;
+  overflow: visible !important;
+  /* @apply rounded-md; */
+}
+
+.oimi-index {
+  @apply inline-block text-white text-base bg-black rounded-full text-center z-50;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  content: attr(data-oimi-index);
 }
 
 .border-primary {
+  border: 1px solid #a883f7c6;
+}
+
+.oimi-cursor-highlight {
     border: 1px solid #a883f7c6;
 }
 
 .border-light::after {
-    @apply absolute -right-2 -top-2 inline-block text-white text-base bg-black rounded-full text-center z-50;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    content: attr(data-oimi-index);
+  @apply absolute -right-2 -top-2 inline-block text-white text-base bg-black rounded-full text-center z-50;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  content: attr(data-oimi-index);
 }

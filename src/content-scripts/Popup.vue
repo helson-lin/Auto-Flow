@@ -127,19 +127,31 @@ export default defineComponent({
       </div>
       <!--- 展示的内容 -->
       <div class="tool-area">
-        <button
-          class="h-10 px-6 mb-2 font-semibold rounded-md text-slate-900  border-primary hover:bg-gray-800 hover:text-white"
+        <div class="w-1/3 pr-2">
+          <button
+          class="w-full h-10 px-6 mb-2 font-semibold rounded-md text-slate-900  border-primary hover:bg-purple-500 hover:text-white"
           :class="{ 'bg-purple-400': flow, 'text-white': flow }"
           @click="doAction"
         >
-          {{ flow ? "清空action" : "设置action" }}
+          {{ flow ? "清空" : "设置" }}
         </button>
-        <button
-          class="h-10 px-6 font-semibold rounded-md border-primary text-slate-900 hover:bg-gray-800 hover:text-white"
+        </div>
+        <div class="w-1/3 pl-2">
+          <button
+          class="w-full h-10 px-6 font-semibold rounded-md border-primary text-slate-900 hover:bg-purple-500 hover:text-white"
           @click="execAction"
         >
           执行
         </button>
+        </div>
+        <div class="w-1/3 pl-2">
+          <button
+          class="w-full h-10 px-6 font-semibold rounded-md border-primary text-slate-900 hover:bg-purple-500 hover:text-white"
+          @click="execAction"
+        >
+          重复
+        </button>
+        </div>
       </div>
       <!--- actions -->
       <div class="actions" :class="{ 'filter blur-xl': asideClose }">
@@ -148,7 +160,7 @@ export default defineComponent({
             <div class="action-item-label">
               序号：
             </div>
-            <div class="action-item-value">
+            <div class="action-item-value pl-2">
               {{ action.index }}
             </div>
           </div>
@@ -158,7 +170,7 @@ export default defineComponent({
             </div>
             <div class="action-item-value">
               <input
-                class="block w-38 rounded-md border-0 py-1.5 pl-7 pr-7 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-white"
+                class="block w-38 rounded-md border-0 py-1.5 pl-2 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-white"
                 type="text"
                 min="100"
                 v-model="action.timeout"
